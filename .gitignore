@@ -1,0 +1,40 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+*.ipynb_checkpoints/
+
+# --- Environment / secrets ---
+.env
+.env.*
+*.pem
+*.key
+secrets.json
+**/credentials.json
+
+# --- Node (if any frontend tooling gets added) ---
+node_modules/
+
+# --- Data files (don't commit raw NAV dumps to git) ---
+data-engineering/ingestion/raw_data/
+*.csv
+*.json
+!**/sample_data/*.csv
+!**/sample_data/*.json
+
+# --- OS / editor ---
+.DS_Store
+.vscode/
+*.swp
+
+# --- Airflow ---
+analytics-forecasting/dags/logs/
+*.pid
+
+# --- Build artifacts ---
+*.log
+dist/
+build/
