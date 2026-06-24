@@ -137,38 +137,7 @@ def render():
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # Historical NAV chart
-    st.markdown('<div class="section-subheader">📈 Historical Net Asset Value (NAV) Line</div>', unsafe_allow_html=True)
-    
-    # Range select
-    period_options = {
-        "1 Month": 30,
-        "3 Months": 90,
-        "6 Months": 180,
-        "1 Year": 365,
-        "3 Years": 1095,
-        "Max": 9999
-    }
-    selected_period = st.radio("Time Frame", list(period_options.keys()), index=3, horizontal=True)
-    
-    try:
-        nav_history = ds.get_nav_history(selected_fund_name)
-        if not nav_history.empty:
-            date_col = "nav_date" if "nav_date" in nav_history.columns else ("date" if "date" in nav_history.columns else nav_history.columns[0])
-            nav_history["date"] = pd.to_datetime(nav_history[date_col])
-            nav_history = nav_history.sort_values(by="date")
-            
-            days = period_options[selected_period]
-            if days != 9999:
-                cutoff_date = nav_history["date"].max() - pd.Timedelta(days=days)
-                nav_history = nav_history[nav_history["date"] >= cutoff_date]
-                
-            fig_nav = ChartFactory.line_chart(nav_history, x="date", y="nav", title=f"{selected_fund_name} NAV Trend")
-            st.plotly_chart(fig_nav, use_container_width=True)
-        else:
-            st.info("No daily NAV history data available.")
-    except Exception as e:
-        st.error(f"Error loading NAV history: {e}")
+
 
     # Return comparison block
     st.markdown("<br>", unsafe_allow_html=True)
