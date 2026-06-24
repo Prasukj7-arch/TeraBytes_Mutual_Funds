@@ -26,7 +26,7 @@ def render():
 
     # Status check
     if not OpenAIConfig.is_configured():
-        st.info("ℹ️ Running in offline rule-based fallback mode. Configure your OpenAI API key in `.env` to unlock full natural language capabilities.")
+        st.info("ℹ️ Running in Database Query Mode. No API key needed to compare schemes, analyze risk, or query Databricks data.")
 
     # Two column layout: Chat on left, suggestions on right
     chat_col, sidebar_col = st.columns([7, 3])
