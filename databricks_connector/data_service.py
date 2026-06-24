@@ -234,6 +234,9 @@ class DataService:
             df = self._demo_portfolio()
         else:
             df = self._live_portfolio_df()
+            if df.empty:
+                # Fallback to demo portfolio data for now to hold the portfolio module
+                df = self._demo_portfolio()
 
         if df.empty or client_name is None:
             return df
