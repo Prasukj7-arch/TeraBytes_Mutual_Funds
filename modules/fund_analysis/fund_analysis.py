@@ -154,7 +154,8 @@ def render():
     try:
         nav_history = ds.get_nav_history(selected_fund_name)
         if not nav_history.empty:
-            nav_history["date"] = pd.to_datetime(nav_history["date"])
+            date_col = "nav_date" if "nav_date" in nav_history.columns else ("date" if "date" in nav_history.columns else nav_history.columns[0])
+            nav_history["date"] = pd.to_datetime(nav_history[date_col])
             nav_history = nav_history.sort_values(by="date")
             
             days = period_options[selected_period]
