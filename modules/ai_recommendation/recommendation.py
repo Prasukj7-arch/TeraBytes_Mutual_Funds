@@ -16,7 +16,10 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-sys.path.insert(0, r"C:\Users\GANESH\.gemini\antigravity\scratch\mf_analytics")
+from pathlib import Path
+_ROOT = str(Path(__file__).resolve().parent.parent.parent)
+if _ROOT not in sys.path:
+    sys.path.insert(0, _ROOT)
 
 from databricks_connector.data_service import DataService
 from services.ai_service import AIService
