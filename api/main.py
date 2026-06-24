@@ -16,6 +16,8 @@ request/response shapes before building each route.
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.routes.portfolio import router as portfolio_router
+
 app = FastAPI(
     title="Mutual Fund Insight & Forecasting API",
     description=(
@@ -35,11 +37,7 @@ app.add_middleware(
 # ---------------------------------------------------------------------------
 # Routers
 # ---------------------------------------------------------------------------
-# As routes are built (see docs/api-contract.md), wire them up here, e.g.:
-#
-# from app.routes import funds, portfolio
-# app.include_router(funds.router, prefix="/funds", tags=["funds"])
-# app.include_router(portfolio.router, prefix="/portfolio", tags=["portfolio"])
+app.include_router(portfolio_router, tags=["portfolio"])
 
 
 @app.get("/")
