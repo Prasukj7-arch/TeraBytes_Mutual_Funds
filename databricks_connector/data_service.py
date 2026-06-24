@@ -344,6 +344,12 @@ class DataService:
         if df.empty:
             return df
 
+        # Safeguard: ensure both 'nav_date' and 'date' columns exist to prevent KeyError
+        if "nav_date" in df.columns and "date" not in df.columns:
+            df["date"] = df["nav_date"]
+        elif "date" in df.columns and "nav_date" not in df.columns:
+            df["nav_date"] = df["date"]
+
         if fund_name is not None:
             name_col = "fund_name" if "fund_name" in df.columns else df.columns[0]
             df = df[df[name_col].str.lower() == fund_name.strip().lower()]
