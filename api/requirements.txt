@@ -3,3 +3,4 @@ uvicorn[standard]
 pandas
 snowflake-connector-python
 python-dotenv
+psycopg2-binary
