@@ -1,0 +1,578 @@
+/* ============================================
+   MF Analytics Pro - Premium Dark Theme
+   ============================================ */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Global Styles */
+.stApp {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Hide Streamlit defaults */
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+footer {visibility: hidden;}
+
+/* Main container */
+.main .block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    max-width: 1400px;
+}
+
+/* ============================================
+   KPI Cards - Glassmorphism Style
+   ============================================ */
+.kpi-card {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    padding: 20px 24px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #6366F1, #8B5CF6, #06B6D4);
+}
+
+.kpi-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+}
+
+.kpi-card .kpi-label {
+    color: #94A3B8;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 8px;
+}
+
+.kpi-card .kpi-value {
+    color: #F8FAFC;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 4px;
+}
+
+.kpi-card .kpi-delta {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.kpi-delta.positive {
+    color: #10B981;
+}
+
+.kpi-delta.negative {
+    color: #EF4444;
+}
+
+/* ============================================
+   KPI Card Variants
+   ============================================ */
+.kpi-card.success {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.02) 100%);
+    border-color: rgba(16, 185, 129, 0.25);
+}
+.kpi-card.success::before {
+    background: linear-gradient(90deg, #10B981, #34D399);
+}
+
+.kpi-card.danger {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.02) 100%);
+    border-color: rgba(239, 68, 68, 0.25);
+}
+.kpi-card.danger::before {
+    background: linear-gradient(90deg, #EF4444, #F87171);
+}
+
+.kpi-card.warning {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.02) 100%);
+    border-color: rgba(245, 158, 11, 0.25);
+}
+.kpi-card.warning::before {
+    background: linear-gradient(90deg, #F59E0B, #FBBF24);
+}
+
+.kpi-card.info {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.02) 100%);
+    border-color: rgba(59, 130, 246, 0.25);
+}
+.kpi-card.info::before {
+    background: linear-gradient(90deg, #3B82F6, #60A5FA);
+}
+
+.kpi-card.accent {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(6, 182, 212, 0.02) 100%);
+    border-color: rgba(6, 182, 212, 0.25);
+}
+.kpi-card.accent::before {
+    background: linear-gradient(90deg, #06B6D4, #22D3EE);
+}
+
+/* ============================================
+   Section Headers
+   ============================================ */
+.section-header {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #F8FAFC;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-subheader {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #CBD5E1;
+    margin-bottom: 0.75rem;
+}
+
+/* ============================================
+   Page Title
+   ============================================ */
+.page-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 30%, #06B6D4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+}
+
+.page-subtitle {
+    color: #94A3B8;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+/* ============================================
+   Charts Container
+   ============================================ */
+.chart-container {
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(71, 85, 105, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.chart-container:hover {
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.chart-title {
+    color: #E2E8F0;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+/* ============================================
+   Data Tables
+   ============================================ */
+.styled-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 0.9rem;
+}
+
+.styled-table thead th {
+    background: rgba(99, 102, 241, 0.15);
+    color: #CBD5E1;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.8px;
+    padding: 14px 16px;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.2);
+    text-align: left;
+}
+
+.styled-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.styled-table tbody tr:nth-child(even) {
+    background: rgba(30, 41, 59, 0.3);
+}
+
+.styled-table tbody tr:hover {
+    background: rgba(99, 102, 241, 0.08);
+}
+
+.styled-table tbody td {
+    padding: 12px 16px;
+    color: #E2E8F0;
+    border-bottom: 1px solid rgba(71, 85, 105, 0.2);
+}
+
+/* ============================================
+   Badge / Tag Styles
+   ============================================ */
+.category-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.badge-largecap { background: rgba(99, 102, 241, 0.2); color: #818CF8; }
+.badge-midcap { background: rgba(139, 92, 246, 0.2); color: #A78BFA; }
+.badge-smallcap { background: rgba(236, 72, 153, 0.2); color: #F472B6; }
+.badge-flexicap { background: rgba(6, 182, 212, 0.2); color: #22D3EE; }
+.badge-multicap { background: rgba(59, 130, 246, 0.2); color: #60A5FA; }
+.badge-elss { background: rgba(16, 185, 129, 0.2); color: #34D399; }
+.badge-hybrid { background: rgba(245, 158, 11, 0.2); color: #FBBF24; }
+.badge-debt { background: rgba(148, 163, 184, 0.2); color: #CBD5E1; }
+.badge-index { background: rgba(244, 114, 182, 0.2); color: #F9A8D4; }
+
+/* ============================================
+   Gain/Loss Indicators
+   ============================================ */
+.gain {
+    color: #10B981;
+    font-weight: 600;
+}
+
+.loss {
+    color: #EF4444;
+    font-weight: 600;
+}
+
+.gain-bg {
+    background: rgba(16, 185, 129, 0.1);
+    border-left: 3px solid #10B981;
+    padding: 8px 12px;
+    border-radius: 0 8px 8px 0;
+}
+
+.loss-bg {
+    background: rgba(239, 68, 68, 0.1);
+    border-left: 3px solid #EF4444;
+    padding: 8px 12px;
+    border-radius: 0 8px 8px 0;
+}
+
+/* ============================================
+   Sidebar Enhancements
+   ============================================ */
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
+}
+
+[data-testid="stSidebar"] .stRadio > label {
+    color: #CBD5E1;
+    font-weight: 500;
+}
+
+.sidebar-logo {
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(71, 85, 105, 0.3);
+}
+
+.sidebar-logo h1 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #6366F1, #06B6D4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+}
+
+.sidebar-logo p {
+    color: #64748B;
+    font-size: 0.75rem;
+    margin: 4px 0 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ============================================
+   AI Advisor Section
+   ============================================ */
+.ai-advisor-card {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(6, 182, 212, 0.08) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 16px 0;
+}
+
+.ai-strength {
+    background: rgba(16, 185, 129, 0.08);
+    border-left: 3px solid #10B981;
+    padding: 12px 16px;
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 8px;
+    color: #D1FAE5;
+}
+
+.ai-weakness {
+    background: rgba(245, 158, 11, 0.08);
+    border-left: 3px solid #F59E0B;
+    padding: 12px 16px;
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 8px;
+    color: #FEF3C7;
+}
+
+.ai-recommendation {
+    background: rgba(59, 130, 246, 0.08);
+    border-left: 3px solid #3B82F6;
+    padding: 12px 16px;
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 8px;
+    color: #DBEAFE;
+}
+
+/* ============================================
+   Health Score Ring
+   ============================================ */
+.health-score-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.health-score {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    font-size: 2.5rem;
+    font-weight: 800;
+    position: relative;
+}
+
+.health-score.excellent {
+    background: conic-gradient(#10B981 var(--score-pct), rgba(71, 85, 105, 0.3) 0);
+    color: #10B981;
+}
+
+.health-score.good {
+    background: conic-gradient(#3B82F6 var(--score-pct), rgba(71, 85, 105, 0.3) 0);
+    color: #3B82F6;
+}
+
+.health-score.fair {
+    background: conic-gradient(#F59E0B var(--score-pct), rgba(71, 85, 105, 0.3) 0);
+    color: #F59E0B;
+}
+
+.health-score.poor {
+    background: conic-gradient(#EF4444 var(--score-pct), rgba(71, 85, 105, 0.3) 0);
+    color: #EF4444;
+}
+
+/* ============================================
+   Chat Interface
+   ============================================ */
+.chat-container {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(71, 85, 105, 0.3);
+    border-radius: 16px;
+    padding: 16px;
+    height: 600px;
+    overflow-y: auto;
+}
+
+.quick-action-btn {
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 12px;
+    padding: 10px 16px;
+    color: #CBD5E1;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+.quick-action-btn:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.4);
+    transform: translateX(4px);
+}
+
+/* ============================================
+   Form Styling
+   ============================================ */
+.recommendation-form {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 20px;
+    padding: 32px;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 15px rgba(99, 102, 241, 0.2); }
+    50% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.4); }
+}
+
+.animate-fade-in {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.animate-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+.animate-pulse {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ============================================
+   Scrollbar Styling
+   ============================================ */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.3);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.5);
+}
+
+/* ============================================
+   Responsive Adjustments
+   ============================================ */
+@media (max-width: 768px) {
+    .kpi-card .kpi-value {
+        font-size: 1.4rem;
+    }
+    .page-title {
+        font-size: 1.6rem;
+    }
+    .main .block-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* ============================================
+   Streamlit Element Overrides
+   ============================================ */
+/* Style selectbox */
+.stSelectbox > div > div {
+    background-color: rgba(30, 41, 59, 0.8);
+    border-color: rgba(71, 85, 105, 0.5);
+    border-radius: 12px;
+}
+
+/* Style radio buttons */
+.stRadio > div {
+    gap: 0.5rem;
+}
+
+/* Style tabs */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 4px;
+    background: rgba(30, 41, 59, 0.5);
+    border-radius: 12px;
+    padding: 4px;
+}
+
+.stTabs [data-baseweb="tab"] {
+    border-radius: 10px;
+    padding: 8px 20px;
+    font-weight: 500;
+}
+
+/* Style expanders */
+.streamlit-expanderHeader {
+    font-weight: 600;
+    color: #CBD5E1;
+    background: rgba(30, 41, 59, 0.5);
+    border-radius: 12px;
+}
+
+/* Mode indicator */
+.mode-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.mode-demo {
+    background: rgba(245, 158, 11, 0.15);
+    color: #FBBF24;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.mode-live {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34D399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
