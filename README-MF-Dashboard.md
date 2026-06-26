@@ -43,7 +43,9 @@ An enterprise-grade, schema-adaptive Mutual Fund dashboard designed to run on to
    - Computes weighted stats, category donut shares, HHI diversification index, and future growth paths.
    - **AI Portfolio Advisor**: Reviews portfolio health, listing strengths, weaknesses, and actionable recommendations.
 
-
+8. **AI Chat Assistant**
+   - Integrated chatbot to explain risk metrics, compare funds, and recommend allocations.
+   - Rich rule-based fallback responses when running offline.
 
 ---
 
@@ -74,12 +76,14 @@ mf_analytics/
 │   ├── ups_downs/                      # Module 3
 │   ├── category_analysis/              # Module 4
 │   ├── ai_recommendation/              # Module 5
-│   └── portfolio_analysis/             # Module 6
+│   ├── portfolio_analysis/             # Module 6
+│   └── chatbot/                        # Module 7
 │
 ├── services/
 │   ├── ai_service.py                   # LangChain & OpenAI integration
 │   ├── recommendation_engine.py        # Logic for target allocations
-│   └── portfolio_engine.py             # Math & Stats for client assets
+│   ├── portfolio_engine.py             # Math & Stats for client assets
+│   └── chat_service.py                 # Conversational routing
 │
 ├── charts/
 │   ├── chart_factory.py                # Centralized Plotly charts
@@ -114,7 +118,7 @@ cp .env.example .env
 Open `.env` and adjust the variables:
 - Set `APP_MODE=demo` to test the platform immediately offline using synthetic data.
 - Set `APP_MODE=live` to connect directly to Databricks (requires entering your credentials).
-- Insert your `OPENAI_API_KEY` to activate AI recommendations.
+- Insert your `OPENAI_API_KEY` to activate AI recommendations and conversational chat.
 
 ### 3. Run the Dashboard
 Start the Streamlit application:

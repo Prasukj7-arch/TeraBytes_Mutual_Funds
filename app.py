@@ -52,12 +52,16 @@ load_css()
 # Navigation / Page Definitions
 # ─────────────────────────────────────────────
 PAGES = {
-    "📊 Market Overview": "market_overview",
-    "🔍 Fund Analytics": "fund_analysis",
-    "📈 Ups & Downs": "ups_downs",
-    "📂 Category Analytics": "category_analysis",
+    "📊 Consolidated Dashboard": "consolidated_dashboard",
+    "📈 Mutual Funds Overview": "market_overview",
+    "🔍 MF Performance Analytics": "fund_analysis",
+    "📂 MF Category Analytics": "category_analysis",
+    "📈 MF Gainers & Losers": "ups_downs",
+    "📈 Stock Watchlist": "stock_watchlist",
+    "🔍 Stock Brand Analytics": "stock_brand_analytics",
+    "💼 Consolidated Portfolio": "portfolio_analysis",
     "🤖 AI Recommendations": "ai_recommendation",
-    "💼 Portfolio Analysis": "portfolio_analysis",
+    "💬 AI Chat Advisor": "chatbot",
 }
 
 
@@ -71,8 +75,8 @@ def render_sidebar():
         st.markdown(
             """
             <div class="sidebar-logo">
-                <h1>📊 MF Analytics Pro</h1>
-                <p>Mutual Fund Platform</p>
+                <h1>📊 Wealth Analytics Pro</h1>
+                <p>Combined Stocks & MFs</p>
             </div>
             """,
             unsafe_allow_html=True,
@@ -124,8 +128,8 @@ def render_sidebar():
         st.markdown(
             """
             <div style="text-align:center; color: #475569; font-size: 0.7rem;">
-                MF Analytics Pro v1.0<br>
-                © 2025 — Enterprise Analytics
+                Wealth Analytics Pro v1.0<br>
+                © 2025 — Enterprise Wealth Management
             </div>
             """,
             unsafe_allow_html=True,
@@ -140,7 +144,9 @@ def render_sidebar():
 def load_page(page_key: str):
     """Dynamically import and render the selected module."""
 
-    if page_key == "market_overview":
+    if page_key == "consolidated_dashboard":
+        from modules.consolidated_dashboard.consolidated_dashboard import render
+    elif page_key == "market_overview":
         from modules.market_overview.market_overview import render
     elif page_key == "fund_analysis":
         from modules.fund_analysis.fund_analysis import render
@@ -148,15 +154,22 @@ def load_page(page_key: str):
         from modules.ups_downs.ups_downs import render
     elif page_key == "category_analysis":
         from modules.category_analysis.category_analysis import render
-    elif page_key == "ai_recommendation":
-        from modules.ai_recommendation.recommendation import render
+    elif page_key == "stock_watchlist":
+        from modules.stock_watchlist.stock_watchlist import render
+    elif page_key == "stock_brand_analytics":
+        from modules.stock_brand_analytics.stock_brand_analytics import render
     elif page_key == "portfolio_analysis":
         from modules.portfolio_analysis.portfolio_analysis import render
+    elif page_key == "ai_recommendation":
+        from modules.ai_recommendation.recommendation import render
+    elif page_key == "chatbot":
+        from modules.chatbot.chatbot import render
     else:
         st.error(f"Unknown page: {page_key}")
         return
 
     render()
+
 
 
 # ─────────────────────────────────────────────

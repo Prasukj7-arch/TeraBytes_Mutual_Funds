@@ -27,3 +27,9 @@ python-Levenshtein>=0.25.0
 
 # Testing
 pytest>=8.0.0
+
+# Added for new modules
+yfinance>=0.2.30
+vaderSentiment>=3.3.2
+tweepy>=4.14.0
+psycopg2-binary>=2.9.9

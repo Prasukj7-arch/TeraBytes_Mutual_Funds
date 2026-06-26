@@ -13,10 +13,19 @@ app/services/ as the Snowflake schema (Person A) and contract
 request/response shapes before building each route.
 """
 
+import sys
+from pathlib import Path
+
+# Prevent root app.py from shadowing local app/ package
+_ROOT_DIR = str(Path(__file__).resolve().parent.parent)
+sys.path = [p for p in sys.path if p != _ROOT_DIR]
+
+_API_DIR = str(Path(__file__).resolve().parent)
+if _API_DIR not in sys.path:
+    sys.path.insert(0, _API_DIR)
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
-from app.routes.portfolio import router as portfolio_router
 
 app = FastAPI(
     title="Mutual Fund Insight & Forecasting API",
@@ -35,9 +44,18 @@ app.add_middleware(
 )
 
 # ---------------------------------------------------------------------------
-# Routers
+# Database Initialization & Routers
 # ---------------------------------------------------------------------------
-app.include_router(portfolio_router, tags=["portfolio"])
+
+from app.services.db import init_db
+try:
+    init_db()
+except Exception as e:
+    print(f"Error initializing DB: {e}")
+
+from app.routes import portfolio
+app.include_router(portfolio.router, prefix="/portfolio", tags=["portfolio"])
+
 
 
 @app.get("/")

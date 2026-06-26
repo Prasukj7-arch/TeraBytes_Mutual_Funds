@@ -98,3 +98,19 @@ class AppConfig:
     def is_demo_mode(cls) -> bool:
         """Check if running in demo mode."""
         return cls.MODE.lower() == "demo"
+
+
+class PostgreSQLConfig:
+    """PostgreSQL connection settings."""
+
+    HOST: str = os.getenv("DB_HOST", "prasuk-practice-db.cpckkgcwoy32.ap-south-1.rds.amazonaws.com")
+    PORT: int = int(os.getenv("DB_PORT", "5432"))
+    NAME: str = os.getenv("DB_NAME", "postgres")
+    USER: str = os.getenv("DB_USER", "pgadmin")
+    PASSWORD: str = os.getenv("DB_PASSWORD", "YourOwnStrongPassword123!")
+
+    @classmethod
+    def is_configured(cls) -> bool:
+        """Check if database credentials are provided."""
+        return bool(cls.HOST and cls.USER and cls.PASSWORD)
+

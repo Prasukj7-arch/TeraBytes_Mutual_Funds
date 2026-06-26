@@ -182,3 +182,23 @@ class AIService:
             "recommendations": recommendations,
             "health_score": int(health_score)
         }
+
+    def chat_response(self, question: str, context_data: dict) -> str:
+        """Generate conversational responses for the chat assistant."""
+        if self.ai_available and self.llm:
+            try:
+                from langchain_core.prompts import ChatPromptTemplate
+                prompt = ChatPromptTemplate.from_messages([
+                    ("system", "You are a helpful AI Mutual Fund Advisor integrated inside an analytics platform. Use the provided context data to answer the user's question accurately. Focus on risk/reward metrics (Sharpe, Alpha, Beta, Volatility), asset allocation, and comparing funds/categories. Be professional, clear, and structured."),
+                    ("user", "Context Information: {context}\nUser Question: {question}")
+                ])
+                chain = prompt | self.llm
+                response = chain.invoke({
+                    "context": str(context_data),
+                    "question": question
+                })
+                return response.content
+            except Exception as e:
+                logger.error("AI chat failed: %s", e)
+
+        return "I am currently running in offline rule-based mode. To enable full conversational AI features, please configure your OpenAI API Key."

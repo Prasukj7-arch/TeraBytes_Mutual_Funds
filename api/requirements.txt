@@ -3,4 +3,7 @@ uvicorn[standard]
 pandas
 snowflake-connector-python
 python-dotenv
-psycopg2-binary
+
+# Added for new portfolio routing features
+yfinance>=0.2.30
+psycopg2-binary>=2.9.9
