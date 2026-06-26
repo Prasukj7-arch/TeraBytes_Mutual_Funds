@@ -1,12 +1,19 @@
 # Wealth Analytics Pro: Combined Stocks & MFs
 
-A comprehensive analytics platform for tracking, analyzing, and forecasting both **Mutual Funds** and **Stocks**. This project features a unified database architecture, an interactive Streamlit dashboard, and a FastAPI backend to manage user portfolios and provide actionable insights.
+A comprehensive analytics platform that provides tracking, **prediction**, **advice**, and insights on **hikes and lows** for both **Mutual Funds** and **Stocks**. 
 
 > Educational / informational project only — nothing here is financial advice.
+
+## System Architecture & Data Flow
+To ensure high performance and scalability, the data is split across two robust engines:
+- **Databricks**: Stores and processes the massive historical NAV data for Mutual Funds, handling complex aggregations, predictions, and identifying historical hikes and lows.
+- **AWS RDS (PostgreSQL)**: Serves as the transactional database to store User Portfolios securely and track real-time holdings, synced with live stock data.
 
 ## Key Features
 
 - **Consolidated Dashboard**: View your overall net worth, combined asset performance (Stocks + Mutual Funds), and profit/loss metrics.
+- **Predictions & AI Advice**: AI-driven analysis, market overview forecasts, and personalized recommendations based on portfolio holdings.
+- **Market Hikes & Lows**: Detects and alerts on significant market movements (dips and hikes) by leveraging historical Databricks data.
 - **Stock Watchlist**: Track live stock prices, historic performance, and key metrics via Yahoo Finance (`yfinance`).
 - **Stock Brand Analytics**: Analyze brand sentiment and signals using natural language processing (`vaderSentiment` and `tweepy`).
 - **Mutual Fund Analytics**: Insights into fund performance, market overviews, and category analytics.
