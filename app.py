@@ -58,7 +58,6 @@ PAGES = {
     "📂 Category Analytics": "category_analysis",
     "🤖 AI Recommendations": "ai_recommendation",
     "💼 Portfolio Analysis": "portfolio_analysis",
-    "💬 AI Chat Advisor": "chatbot",
 }
 
 
@@ -153,8 +152,6 @@ def load_page(page_key: str):
         from modules.ai_recommendation.recommendation import render
     elif page_key == "portfolio_analysis":
         from modules.portfolio_analysis.portfolio_analysis import render
-    elif page_key == "chatbot":
-        from modules.chatbot.chatbot import render
     else:
         st.error(f"Unknown page: {page_key}")
         return
